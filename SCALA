@@ -1,0 +1,261 @@
+object Adventure {
+  class InventoryItem(val name:String)
+  def getRequest(): String = {
+    println("Where you want to run now!!")
+    getRequest()
+  }
+  def printHelp() {
+    println("You have four sides to run!")
+    println("N=North, E=East, S=South and W=West")
+  }
+  def processSpecialCommand(req: String) {
+    if (req == "H=HELP")
+      printHelp
+    else if (req == "Q=QUIT") {
+      println("Why are giving up Tae!!")
+      println("Are you scared of Liza?")
+      println("Ohk then !!!! Better luck next time dear Tae!!")
+      sys.exit(1)
+    } else {
+      println("What you want to say!!!")
+      println("you can use 'H' for your help.")
+    }
+  }
+  def room1() {
+    println()
+    println("-")
+    println("Room 1")
+    println("-")
+    println(" Look, there is a hotel.")
+    println("There are three doors towards the East, South, and West.Run Run!!!")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        println("You are not able to go there.")
+        return room1()
+      case "E" =>
+        return room6()
+      case "S" =>
+        return room2()
+      case "W" =>
+        return room3()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room1()
+    }
+  }
+  def room2() {
+    println()
+    println("-")
+    println("Room 2")
+    println("-")
+    println("There are again three doors towards the North, South, and West")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        return room1()
+      case "E" =>
+        println("No...You can't go")
+        return room2()
+      case "S" =>
+        return room7()
+      case "W" =>
+        return room4()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room2()
+    }
+  }
+  def room3() {
+    println()
+    println("-")
+    println("Room 3")
+    println("-")
+    println("What do you get Tae!!")
+    println("Ahhh!! Tae...It's no.4 piece.")
+    println("Now there are two doors towards the East and South")
+    println("You can move now.")
+    val move = getRequest().toUpperCase
+    move match {
+      case "N" =>
+        println("Stop!!Can't move there!!")
+        return room3()
+      case "E" =>
+        return room1()
+      case "S" =>
+        return room4()
+      case "W" =>
+        println("Can't move there!!!.")
+        return room3()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room3()
+    }
+  }
+  def room4() {
+    println()
+    println("-")
+    println("Room 4")
+    println("-")
+    println("Hey what do you find Tae!!!")
+    println("Ahh!!! number 2!!...Good!!!")
+    println(" Now there are two more doors towards the North and East")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        return room3()
+      case "E" =>
+        return room2()
+      case "S" =>
+        println("Can't move!!Sorry!!.")
+        return room4()
+      case "W" =>
+        println("Can't move!!!Sorry!!.")
+        return room4()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room4()
+    }
+  }
+  def room5() {
+    println()
+    println("-")
+    println("Room 5")
+    println("-")
+    println("Hey!! What do you find Tae!!")
+    println("Great it's piece no.3!!!Good job Tae")
+    println("There are again two doors towards the North and South")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        return room6()
+      case "E" =>
+        println("Stop Tae!!!!! you can't go!!!Sorry!!!.")
+        return room5()
+      case "S" =>
+        return room8()
+      case "W" =>
+        println("You cann't go there!!!Sorryy!!.")
+        return room5()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room5()
+    }
+  }
+  def room6() {
+    println()
+    println("-")
+    println("Room 6")
+    println("-")
+    println("There are two more doors towards the East, South and West")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        println("You cann't move there.")
+        return room6()
+      case "E" =>
+        return room9()
+      case "S" =>
+        return room5()
+      case "W" =>
+        return room1()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room6()
+    }
+  }
+  def room7() {
+    println()
+    println("-")
+    println("Room 7")
+    println("-")
+    println("There are two doors towards the North and East")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        return room2()
+      case "E" =>
+        return room8()
+      case "S" =>
+        println("Sorry!!!Can't move!!.")
+        return room7()
+      case "W" =>
+        println("Sorry!!Can't move!!.")
+        return room7()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room7()
+    }
+  }
+  def room8() {
+    println()
+    println("-")
+    println("Room 8")
+    println("-")
+    println("Now here you have three doors towards the North, East and West")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        return room5()
+      case "E" =>
+        return room10()
+      case "S" =>
+        println("Stop!! Stop!! Can't move!!.")
+        return room8()
+      case "W" =>
+        return room7()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room8()
+    }
+  }
+  def room9() {
+    println()
+    println("-")
+    println("Room 9")
+    println("-")
+    println("Tae you again found something!!")
+    println("Yahoooo!!! It's piece number 1!!!")
+    println("Now you have two doors towards the South and West")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        println("Stop Tae you can't move!!!Sorry!!")
+        return room9()
+      case "E" =>
+        println("You can't move!!.")
+        return room9()
+      case "S" =>
+        return room10()
+      case "W" =>
+        return room6()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room9()
+    }
+  }
+  def room10() {
+    println()
+    println("-")
+    println("Room 10")
+    println("-")
+    println("Now you have two doors towards the North and West")
+    val move = getRequest.toUpperCase
+    move match {
+      case "N" =>
+        return room9()
+      case "E" =>
+        println("Sorry Tae!!Stop!!Can't move!!!.")
+        return room10()
+      case "S" =>
+        println("You can't go there!!!.")
+        return room10()
+      case "W" =>
+        return room8()
+      case cmd =>
+        processSpecialCommand(cmd)
+        return room10()
+    }
+  }
+println("Good job Tae ^_^!!!Play Again")
+}
